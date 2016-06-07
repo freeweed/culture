@@ -1,0 +1,46 @@
+<ion-view view-title="Register">
+  <ion-content>
+    <div class="padding">
+        <a class="button button-icon icon ion-android-camera" ng-click="showCamera()" ng-hide="hasImage"></a>
+        <img id="myImage" class="full-image" src="delorean.jpg" ng-click="showCamera()" ng-show="hasImage"/>
+    </div>
+    <form name="member">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">ชื่อ</span>
+          <input type="text" name="member_name" ng-model="user.member_name" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">นามสกุล</span>
+          <input type="text" name="member_lastname" ng-model="user.member_lastname" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">อีเมล์</span>
+          <input type="email" name="member_email" ng-model="user.member_email" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">โทร</span>
+          <input type="tel" name="member_tel" ng-model="user.member_tel" required>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            จังหวัด
+          </div>
+          <select name="member_province" ng-model="user.member_province" required>
+            <option>กรุณาเลือก</option>
+            <option ng-repeat="province in provinces" value="{{province.province_id}}">{{province.province_name}}</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">รหัสผ่าน</span>
+          <input type="password" name="member_password" ng-model="user.member_password" required>
+        </label>
+      </div>
+    </from>
+    <div class="padding">
+      <button class="button button-block button-dark" ng-disabled="member.member_name.$invalid || member.member_lastname.$invalid || member.member_email.$invalid || member.member_tel.$invalid || member.member_province.$invalid || member.member_password.$invalid" ng-click="submit();">
+        สมัครสมาชิก
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

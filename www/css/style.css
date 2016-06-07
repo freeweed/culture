@@ -1,0 +1,67 @@
+/* Empty. Add your own CSS if you like */
+.item-avatar-right > img:first-child{
+  right: 16px !important;
+}
+
+.item-avatar-right{
+  text-align: right;
+}
+
+.button-bar > .button{
+  text-align: left!important;
+}
+
+.chat{
+  background: url('../img/bg.png') no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   background-size: cover;
+}
+
+div.user{
+  background-color: #4DBCE9;
+}
+
+div.user > p, div.user > h2{
+  color: #FFFFFF;
+}
+.item-avatar.highlight img:first-child{
+  border-radius: 0% !important;
+}
+
+.bg-yellow{
+    /*color :  #FFF!important; // text*/
+    background-color:#FFAD33!important; // for bg color
+ }
+
+ .tabs-custom > .tabs,
+.tabs.tabs-custom {
+  background-color: #FBB829;
+}
+
+.tabs-striped.tabs-custom .tabs {
+  background-color: #FBB829; }
+
+.item.tabs-cat{
+  background-color: #FFF !important;
+}
+
+.item.tabs-cat > a.tab-item{
+  color: #000;
+}
+i.white{
+  color:#4E4F4B !important;
+}
+
+.tabs-striped.tabs-custom .tab-item {
+  color: rgba(255, 255, 255, 0.4);
+  opacity: 1; }
+  .tabs-striped.tabs-custom .tab-item .badge {
+    opacity: 0.4; }
+  .tabs-striped.tabs-custom .tab-item.tab-item-active, .tabs-striped.tabs-custom .tab-item.active, .tabs-striped.tabs-positive .tab-item.activated {
+    margin-top: -2px;
+    color: #4E4F4B;
+    border:none;}
+    /*border-style: solid;
+    border-width: 4px 0 0 0;
+    border-color: #fff; }*/

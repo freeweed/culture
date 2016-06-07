@@ -1,0 +1,79 @@
+<ion-view view-title="Chats">
+  <ion-content>
+    <div class="list">
+      <div class="card">
+        <div class="item item-avatar" href="#">
+          <img src="img/icon-01.png">
+          <p>{{cat.name}}</p>
+          <h2>{{cat.first}}</h2>
+        </div>
+      </div>
+      <div  ng-repeat="quest in user.questions track by $index">
+        <div class="card">
+          <div class="item item-avatar-right user" href="#">
+            <img ng-src="{{user.image}}" id="myImage">
+            <p>{{user.name}}</p>
+            <h2>{{quest}}</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="item item-avatar item-text-wrap" href="#">
+            <img src="img/icon-01.png">
+            <p>{{cat.name}}</p>
+            <h2 ng-bind-html="getHtml(cat.answers[$index].answer)"></h2>
+          </div>
+          <div class="item tabs tabs-icon-left tabs-cat">
+            <a class="tab-item " href="#" ng-click="detail($index);">
+  			      <i class="icon ion-ios-information"></i>
+  			      คำอธิบายเพิ่มเติม
+  			    </a>
+  			    <a class="tab-item" href="#" ng-click="navigator($index);">
+  			      <i class="icon ion-ios-navigate"></i>
+  			      นำทาง
+  			    </a>
+  			    <a class="tab-item" href="#">
+  			      <i class="icon ion-close"></i>
+  			      คำตอบไม่ถูก
+  			    </a>
+  			  </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-light item item-input-inset bg-yellow">
+      <label class="item-input-wrapper">
+        <form ng-submit="getAnswer();">
+          <input type="text" placeholder="ข้อความ..." ng-model="user.question">
+        </form>
+      </label>
+      <button class="button button-clear icon " ng-click="getAnswer();">
+        <i class="icon ion-paper-airplane white"></i>
+      </button>
+  </ion-footer-bar>
+  <script id="notLogin.html" type="text/ng-template" >
+    <ion-modal-view>
+      <ion-header-bar class="bar bar-header bar-dark">
+        <h1 class="title">คุณยังไม่ได้เข้าสู่ระบบ</h1>
+        <button class="button button-clear button-light" ng-click="goBack()">Cancle</button>
+      </ion-header-bar>
+      <ion-content>
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label" >ใส่ชื่อของคุณ</span>
+            <input type="text" ng-model="user.name">
+          </label>
+        </div>
+        <div class="padding">
+          <button class="button button-block button-dark" ng-click="submit();">
+            ตกลง
+          </button>
+        </div>
+        <div class="padding">
+          <a class="button button-block button-clear button-dark" ng-click="goLogin();">
+            เข้าสู่ระบบ
+          </a>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+</ion-view>

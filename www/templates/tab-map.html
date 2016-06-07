@@ -1,0 +1,61 @@
+<ion-view view-title="Map">
+  <ion-content>
+    <div id="map" data-tap-disabled="true" style="height:100%;"></div>
+  </ion-content>
+  <ion-footer-bar class="bar-light item-input-inset bg-yellow">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <form ng-submit="search()">
+        <input type="search" ng-model="Search.subKey" ng-change="Search.Key = Search.subKey" placeholder="ค้นหา" ng-click="modal.show();">
+      </form>
+    </label>
+    <button class="button button-clear" ng-click="filterShow($event);">
+      <i class="icon  ion-android-options white"></i>
+    </button>
+  </ion-footer-bar>
+    <script id="templates/filter.html" type="text/ng-template">
+      <ion-popover-view>
+        <ion-header-bar>
+          <h1 class="title">วัฒนธรรม</h1>
+        </ion-header-bar>
+        <ion-content>
+          <ul class="list">
+            <li class="item item-toggle" ng-repeat="category in categorys">
+               {{category.CD_Name}}
+               <label class="toggle toggle-dark">
+                 <input type="checkbox" value="{{category.ID}}" ng-change="getMarker($index);" ng-model="category.isCheck">
+                 <div class="track">
+                   <div class="handle"></div>
+                 </div>
+               </label>
+            </li>
+          </ul>
+        </ion-content>
+      </ion-popover-view>
+    </script>
+    <script id="mapSearch.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="item-input-inset" align-title="center">
+          <label class="item-input-wrapper">
+           <i class="icon ion-ios-search placeholder-icon"></i>
+           <form ng-submit="search()">
+            <input type="search" placeholder="ค้นหา" ng-model="Search.Key" ng-change="Search.subKey = Search.Key">
+           </form>
+          </label>
+          <button class="button button-clear button-dark" ng-click="modal.hide();">
+            Cancel
+          </button>
+        </ion-header-bar>
+        <ion-content>
+        <div class="card" ng-repeat="result in Search.result" ng-click="selectLocation($index);">
+           <a class="item item-icon-right" href="#">
+             <h2>{{result.Title}}</h2>
+             <p>{{result.Coverage_Location}}</p>
+             <i class="icon ion-ios-arrow-right"></i>
+           </a>
+        </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+</ion-view>

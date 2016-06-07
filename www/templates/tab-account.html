@@ -1,0 +1,80 @@
+<ion-view view-title="Account">
+  <ion-nav-buttons side="right">
+      <button class="button button-clear button-light button-small" ng-click="logout();">
+        <i class="icon ion-log-out white"></i>
+      </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="padding">
+      <img ng-src="{{user.image}}" id="myImage" class="full-image" src="delorean.jpg" ng-click="showCamera()">
+    </div>
+    <form name="member">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">ชื่อ</span>
+          <input type="text" name="member_name" ng-model="user.member_name" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">นามสกุล</span>
+          <input type="text" name="member_lastname" ng-model="user.member_lastname" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">อีเมล</span>
+          <input type="email" name="member_email" ng-model="user.member_email" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">โทร</span>
+          <input type="tel" name="member_tel" ng-model="user.member_tel" required>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            จังหวัด
+          </div>
+          <select name="member_province" ng-model="user.member_province" required>
+            <option>กรุณาเลือก</option>
+            <option ng-repeat="province in provinces" value="{{province.province_id}}" ng-selected="province.province_id == user.member_province">{{province.province_name}}</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">รหัสผ่าน</span>
+          <input type="password" name="member_password" ng-model="user.member_password" required>
+        </label>
+      </div>
+    </from>
+    <div class="padding">
+      <button class="button button-block button-dark" ng-disabled="member.member_name.$invalid || member.member_lastname.$invalid || member.member_email.$invalid || member.member_tel.$invalid || member.member_province.$invalid || member.member_password.$invalid" ng-click="submit();">
+        แก้ไขข้อมูลส่วนตัว
+      </button>
+    </div>
+  </ion-content>
+</ion-view>
+<script id="login.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-dark">
+      <h1 class="title">เข้าสู่ระบบ</h1>
+      <button class="button button-clear button-light" ng-click="goBack()">Cancle</button>
+    </ion-header-bar>
+    <ion-content>
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Username</span>
+        <input type="text" placeholder="อีเมล์หรือเบอร์โทร" ng-model="loginDetail.username">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="loginDetail.password">
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-dark" ng-click="login();">
+        เข้าสู่ระบบ
+      </button>
+    </div>
+    <div class="padding">
+      <a class="button button-block button-clear button-dark" ng-click="goRegis();">
+        สมัครสมาชิก
+      </a>
+    </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

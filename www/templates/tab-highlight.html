@@ -1,0 +1,52 @@
+<ion-view view-title="Highlight">
+  <ion-content>
+    <div class="list">
+      <a class="item item-avatar item-icon-right highlight" ng-repeat="highlight in highlights" href="#/tab/highlight/{{highlight.month}}">
+        <img src="{{highlight.icon}}">
+        {{highlight.month}}
+        <span class="item-note">
+          <i class="icon ion-ios-arrow-right"></i>
+        </span>
+      </a>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="bar-light item-input-inset bg-yellow">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <form ng-submit="search()">
+        <input type="search" ng-model="Search.subKey" ng-change="Search.key = Search.subKey" placeholder="ค้นหา" ng-click="modal.show();">
+      </form>
+    </label>
+  </ion-footer-bar>
+  <script id="highlightSearch.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-header-bar class="item-input-inset" align-title="center">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <form ng-submit="search()">
+            <input type="search" placeholder="ค้นหา" ng-model="Search.key" ng-change="Search.subKey = Search.Key"/>
+          </form>
+        </label>
+        <button class="button button-clear button-dark" ng-click="modal.hide();">
+          Cancel
+        </button>
+      </ion-header-bar>
+      <ion-content>
+      <div class="list card" ng-repeat="result in Search.result">
+        <div class="item item-icon-left" href="#">
+         <i class="icon ion-calendar"></i>
+         <h2>{{result.Title}}</h2>
+       </div>
+
+        <div class="item item-body" ng-bind-html="getHtml(result.Description)">
+
+        </div>
+        <a class="item item-icon-left dark" href="#" ng-click="navigator($index);">
+          <i class="icon ion-ios-navigate"></i>
+          นำทาง
+        </a>
+      </div>
+      </ion-content>
+    </ion-modal-view>
+  </script>
+</ion-view>
